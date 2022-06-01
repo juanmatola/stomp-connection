@@ -29,6 +29,7 @@ function connect() {
 }
 
 function disconnect() {
+    unsubscribe();
     if(stompClient != null) {
         stompClient.disconnect();
     }
@@ -50,15 +51,23 @@ function subscribe() {
 
 function unsubscribe() {
 
-    subscriptionObject.unsubscribe();
+    if (subscriptionObject != null) {
+        subscriptionObject.unsubscribe();
+    }
+
     setSubscribed(false);
 
 }
 
 function showMessageOutput(messageOutput) {
-    var consola = document.getElementById('console');
-    var p = document.createElement('p');
+    let consola = document.getElementById('console');
+    let p = document.createElement('p');
     p.appendChild(document.createTextNode("Topico: " + messageOutput.headers.destination + " | "));
     p.appendChild(document.createTextNode("Payload: " + messageOutput.body));
     consola.appendChild(p);
+}
+
+function clearConsole() {
+    let consola = document.getElementById('console');
+    consola.innerHTML = "";
 }

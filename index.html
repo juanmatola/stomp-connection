@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Explorador WebSocket Stomp</title>
+        <style>
+            html{
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+        </style>
+    </head>
+    <body onload="disconnect()">
+        <div>
+            <h1>Ejemplo de conexion WebSocket mediante protocolo STOMP</h1>
+            <div>
+                <input type="text" id="ws" value="ws://localhost:9097/socket-connect" placeholder="ws://example.com/socket"/>
+                <div id="connection_status_indicator" style="display: inline-block; height: 15px; width: 30px; background-color: red;"></div>
+            </div>
+            <br />
+            <div>
+                <button id="connect" onclick="connect();">Connect</button>
+                <button id="disconnect" disabled="disabled" onclick="disconnect();">
+                    Disconnect
+                </button>
+            </div>
+            <br />
+        </div>
+        
+        <div>
+            <div>
+                <input type="text" id="topic" value="/topic/message" placeholder="/topic/example"/>
+                <div id="subscription_status_indicator" style="display: inline-block; height: 15px; width: 30px; background-color: red;"></div>
+            </div>
+            <br />
+            <div>
+                <button id="subscribe" disabled="disabled" onclick="subscribe();">Subscribe</button>
+                <button id="unsubscribe" disabled="disabled" onclick="unsubscribe();">
+                    Unsubscribe
+                </button>
+            </div>
+            <br />
+        </div>
+
+        <h3>Recepcion de mensajes:</h3>
+        <div style="background-color: rgb(27, 27, 27); color: rgb(247, 247, 247); height: 500px; overflow-y: scroll; padding: 10px;" id="console">
+            
+        </div>
+
+        <div>
+            <p>Para este ejemplo se utilizo la libreria webstomp-client: <a href="https://github.com/JSteunou/webstomp-client">github repo</a> -> <i>$npm install webstomp-client</i>  </p>
+            <p><a href="https://stomp.github.io/">¿Qué es stomp?</a></p>
+        </div>
+        
+        <script src="./node_modules/webstomp-client/dist/webstomp.min.js"></script>
+        <script src="./node_modules/sockjs-client/dist/sockjs.js"></script>
+        <script src="./main.js"></script>
+    </body>
+    </html>

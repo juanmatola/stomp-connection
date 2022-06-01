@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "stomp": "^0.1.1",
+    "websocket": "^1.0.34",
+    "webstomp-client": "^1.2.6"
+  }
+}

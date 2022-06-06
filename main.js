@@ -17,11 +17,12 @@ function setSubscribed(subscribed) {
 function connect() {
 
     let url = document.getElementById('ws').value;
+    let token = 'Bearer ' + document.getElementById('token').value;
 
     console.log(url)
 
     stompClient = webstomp.client(url);  
-    stompClient.connect({}, function(frame) {
+    stompClient.connect({'token': token}, function(frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
 

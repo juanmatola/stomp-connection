@@ -22,7 +22,7 @@ function connect() {
     console.log(url)
 
     stompClient = webstomp.client(url);  
-    stompClient.connect({'token': token}, function(frame) {
+    stompClient.connect({'Authorization': token}, function(frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
 
